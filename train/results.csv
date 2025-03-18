@@ -1,0 +1,37 @@
+epoch,time,train/box_loss,train/cls_loss,train/dfl_loss,metrics/precision(B),metrics/recall(B),metrics/mAP50(B),metrics/mAP50-95(B),val/box_loss,val/cls_loss,val/dfl_loss,lr/pg0,lr/pg1,lr/pg2
+1,66.9901,1.26183,1.56033,1.1417,0.9017,0.86059,0.89998,0.55398,1.30028,0.98369,1.18573,0.000665158,0.000665158,0.000665158
+2,123.01,1.27434,0.88489,1.15582,0.89986,0.88292,0.90468,0.56441,1.23687,0.8503,1.17156,0.0012659,0.0012659,0.0012659
+3,176.646,1.26319,0.78081,1.1529,0.95023,0.8785,0.93155,0.59205,1.24925,0.71079,1.17736,0.00180064,0.00180064,0.00180064
+4,230.614,1.24598,0.73393,1.14168,0.97278,0.86279,0.92611,0.61,1.24347,0.72295,1.16414,0.001703,0.001703,0.001703
+5,283.011,1.21515,0.68303,1.12333,0.9488,0.90336,0.93066,0.62061,1.18213,0.62575,1.1312,0.001604,0.001604,0.001604
+6,335.605,1.19247,0.65473,1.11139,0.96921,0.90979,0.94843,0.63813,1.18309,0.57759,1.12217,0.001505,0.001505,0.001505
+7,387.389,1.17975,0.62293,1.10359,0.96666,0.91135,0.95186,0.64655,1.16644,0.56343,1.1123,0.001406,0.001406,0.001406
+8,439.28,1.16543,0.60952,1.09888,0.96886,0.90979,0.95489,0.64769,1.16934,0.56759,1.11155,0.001307,0.001307,0.001307
+9,494.027,1.16227,0.60002,1.09455,0.97999,0.91457,0.95119,0.64476,1.17681,0.55035,1.10611,0.001208,0.001208,0.001208
+10,547.828,1.14753,0.58068,1.08321,0.97322,0.92392,0.95856,0.65658,1.15017,0.52366,1.09373,0.001109,0.001109,0.001109
+11,603.75,1.13966,0.54147,1.10527,0.96665,0.9244,0.95499,0.64838,1.17067,0.55433,1.10365,0.00101,0.00101,0.00101
+12,662.774,1.12543,0.52804,1.09708,0.98531,0.89567,0.94587,0.64967,1.15048,0.53175,1.09357,0.000911,0.000911,0.000911
+13,717.052,1.11129,0.51045,1.08625,0.97034,0.9221,0.95696,0.66118,1.15877,0.52902,1.09842,0.000812,0.000812,0.000812
+14,769.913,1.10472,0.49636,1.08112,0.97401,0.92206,0.95852,0.66939,1.12996,0.49313,1.07138,0.000713,0.000713,0.000713
+15,823.597,1.10148,0.48544,1.07742,0.97909,0.92984,0.96289,0.67284,1.11314,0.4819,1.07078,0.000614,0.000614,0.000614
+16,876.928,1.08099,0.47118,1.07396,0.98253,0.92243,0.96098,0.67321,1.11538,0.48092,1.07269,0.000515,0.000515,0.000515
+17,930.434,1.06841,0.45241,1.06312,0.98563,0.92574,0.96451,0.68392,1.10744,0.47058,1.06596,0.000416,0.000416,0.000416
+18,982.447,1.05986,0.44727,1.05812,0.98318,0.93303,0.96611,0.68809,1.08145,0.45252,1.05797,0.000317,0.000317,0.000317
+19,1036.05,1.04666,0.43078,1.0527,0.9809,0.936,0.96852,0.69547,1.07889,0.43805,1.05292,0.000218,0.000218,0.000218
+20,1088.4,1.03276,0.41634,1.0437,0.98745,0.93169,0.9686,0.69747,1.07594,0.43499,1.05224,0.000119,0.000119,0.000119
+
+
+Columna	Descripción
+epoch	:Número de época (ciclo de entrenamiento completo sobre los datos).
+time	:Tiempo acumulado en segundos desde que comenzó el entrenamiento.
+train/box_loss	:Pérdida de bounding boxes (cajas delimitadoras), mide qué tan bien se ajustan los cuadros a los objetos reales.
+train/cls_loss	:Pérdida de clasificación, mide qué tan bien el modelo asigna la clase correcta a cada objeto detectado.
+train/dfl_loss	:Pérdida de distribución de frontera (DFL), optimiza la precisión de los bordes de las cajas.
+metrics/precision(B)	:Precisión en validación, mide qué porcentaje de predicciones fueron correctas (TP / (TP + FP)).
+metrics/recall(B)	:Recall en validación, mide qué porcentaje de objetos fueron detectados correctamente (TP / (TP + FN)).
+metrics/mAP50(B)	:Media de precisión (mAP) con un umbral de IoU de 0.50, mide qué tan bien se detectan los objetos.
+metrics/mAP50-95(B)	:mAP en múltiples umbrales (de 0.50 a 0.95), refleja la calidad general de la detección.
+val/box_loss	:Pérdida de cajas en validación, mide qué tan bien se ajustan las cajas en los datos de prueba.
+val/cls_loss	:Pérdida de clasificación en validación, indica si el modelo clasifica bien los objetos en validación.
+val/dfl_loss	:Pérdida DFL en validación, mide precisión de los bordes en los datos de prueba.
+lr/pg0, lr/pg1, lr/pg2	:Tasas de aprendizaje de diferentes grupos de parámetros, indican con qué rapidez se ajusta el modelo.

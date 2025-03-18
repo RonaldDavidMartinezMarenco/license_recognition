@@ -1,0 +1,15 @@
+.env
+.venv
+pycache/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+dataset/
+outputs/
+runs/
+sample/
+
+
+
