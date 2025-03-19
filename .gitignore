@@ -9,7 +9,9 @@ wheels/
 dataset/
 outputs/
 runs/
-sample/
-
-
+samples/
+src/recovered_plates
+src/sort
+src/__pycache__
+train/weights
 

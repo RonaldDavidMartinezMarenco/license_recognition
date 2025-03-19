@@ -8,7 +8,7 @@ from ultralytics import YOLO
 np_model = YOLO('models/best.pt')
 
 # read video by index
-video = cv.VideoCapture("sample/colombiaxde.mp4")
+video = cv.VideoCapture("samples/colombiaxde.mp4")
 ret, frame = video.read()
 
 #video.set(cv.CAP_PROP_FRAME_WIDTH, 640)
@@ -23,7 +23,7 @@ size = (frame_width, frame_height)
 
 # Define the codec and create VideoWriter object
 fourcc = cv.VideoWriter_fourcc(*'DIVX')
-out = cv.VideoWriter('./outputs/input.avi', fourcc, 20.0, size)
+out = cv.VideoWriter('./outputs/detection.avi', fourcc, 60.0, size)
 
 # read frames
 ret = True
