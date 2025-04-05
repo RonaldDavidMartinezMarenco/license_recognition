@@ -3,12 +3,18 @@ import cv2
 from sort.sort import *
 from utils import get_car, read_license_plate,write_csv
 
+parser = argparse.ArgumentParser(description="Visualize license plate detection.")
+parser.add_argument("--video_path", type=str, required=True, help="Path to the input video.")
+args = parser.parse_args()
+
+video_path = args.video_path
+
 results = {}
 coco_model = YOLO('../models/yolo11n.pt')
 license_plate_detector = YOLO('../models/best.pt')
 mot_tracker = Sort() #object tracker
 
-cap = cv2.VideoCapture('../samples/plates.mp4')
+cap = cv2.VideoCapture(video_path)
 
 vehicles = [2,3,5,7]
 

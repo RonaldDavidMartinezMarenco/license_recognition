@@ -3,6 +3,12 @@ import os
 import cv2
 import numpy as np
 import pandas as pd
+import argparse
+import subprocess
+
+parser = argparse.ArgumentParser(description="Visualize license plate detection.")
+parser.add_argument("--video_path", type=str, required=True, help="Path to the input video.")
+args = parser.parse_args()
 
 output_dir = "recovered_plates/videos"
 
@@ -30,14 +36,16 @@ def draw_border(img, top_left, bottom_right, color=(0, 255, 0), thickness=10, li
 results = pd.read_csv('../outputs/test_interpolated.csv')
 
 # load video
-video_path = '../samples/plates.mp4'
+video_path = args.video_path
+
 cap = cv2.VideoCapture(video_path)
 
 fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # Specify the codec
 fps = cap.get(cv2.CAP_PROP_FPS)
 width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-out = cv2.VideoWriter('../outputs/out.mp4', fourcc, fps, (width, height))
+output_video_path = '../outputs/out.mp4'
+out = cv2.VideoWriter(output_video_path, fourcc, fps, (width, height))
 
 license_plate = {}
 for car_id in np.unique(results['car_id']):
@@ -123,7 +131,13 @@ while ret:
         frame = cv2.resize(frame, (1280, 720))
 
         # cv2.imshow('frame', frame)
-        # cv2.waitKey(0)
-
+        # cv2.waitKey(0)      
 out.release()
 cap.release()
+
+
+print("Abriendo el video procesado con el reproductor predeterminado...")
+try:
+    subprocess.run(["start", output_video_path], shell=True, check=True)  # Para Windows
+except Exception as e:
+    print(f"Error al intentar abrir el video: {e}")
